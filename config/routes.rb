@@ -26,6 +26,9 @@
 CanvasRuby::Application.routes.draw do
   resources :opportunities
 
+  match '/auth/:provider/callback' => 'sessions#callback'
+  match '/signout' => 'sessions#destroy', :as => :signout
+  root :to => 'opportunities#index'
 
   get "canvas" => "canvas#index"
   post "canvas" => "canvas#post"

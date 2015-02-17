@@ -1,4 +1,15 @@
 class OpportunitiesController < ApplicationController
+  before_filter :login_required
+
+  def login_required
+    session[:return_to] = request.fullpath
+    if session[:user_id]
+      @current_user = User.find(session[:user_id])
+    else
+      redirect_to '/auth/salesforce'
+    end
+  end
+  
   # GET /opportunities
   # GET /opportunities.json
   def index
