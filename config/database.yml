@@ -1,5 +1,5 @@
 development:
   adapter: postgresql
-  username: opportunities_dev
-  password: m4p0GBDJxnNr
+  username:  <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   database: opportunities_dev
